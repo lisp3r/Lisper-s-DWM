@@ -22,7 +22,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
+static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -48,6 +48,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define L_ALT Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -61,6 +62,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "/opt/alacritty/target/release/alacritty", "--config-file", "/opt/alacritty/alacritty.yml", NULL };
+static const char *bluetoothstart[] = {"/home/lisp3r/go/bin/sluez", "auto", "--device", "F4:7D:EF:B1:A3:E4", NULL};
+static const char *vpn[] = {"/usr/local/bin/vpnr", NULL};
 
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 //static char *statuscmds[] = { "notify-send Mouse$BUTTON" };
@@ -84,6 +87,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ControlMask, 			XK_b,  	   spawn,          {.v = bluetoothstart } },
+	{ MODKEY|ControlMask,           XK_v,  	   spawn,          {.v = vpn } },
 	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
