@@ -38,8 +38,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Firefox",  NULL,       NULL,       1 << 0,       1,           -1 },
-	{ "code",     NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "firefox",    NULL,       NULL,       1 << 0,     0,           -1 },
+	{ "code",       NULL,       NULL,       1 << 1,     0,           -1 },
+    { "spt",    NULL,       "spt",  1 << 6,     0,           -1},
 };
 
 /* layout(s) */
@@ -52,20 +53,21 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    { "[]=",      tile },    /* first entry is default */
-    { "><>",      NULL },    /* no layout function means floating behavior */
+    { ":::",      gaplessgrid }, /* split vertical*/
+    { "TTT",      bstack }, /* split horizontal */
+    { ">M>",      centeredfloatingmaster }, /* float */
     { "[M]",      monocle },
-    { "[@]",      spiral },
-    { "[\\]",     dwindle },
-    { "H[]",      deck },
-    { "TTT",      bstack },
-    { "===",      bstackhoriz },
-    { "HHH",      grid },
-    { "###",      nrowgrid },
-    { "---",      horizgrid },
-    { ":::",      gaplessgrid },
+    // { "[]=",      tile },    /* split vertical*/
+    //{ "><>",      NULL },    /* no layout function means floating behavior */
     { "|M|",      centeredmaster },
-    { ">M>",      centeredfloatingmaster },
+    { ":::",      gaplessgrid }, /* split vertical*/
+    { "---",      horizgrid }, /* split vertical*/
+    { "###",      nrowgrid },
+    { "HHH",      grid }, /* split horizontal*/
+    { "===",      bstackhoriz }, /* split horizontal*/
+    { "H[]",      deck },
+    { "[\\]",     dwindle },
+    { "[@]",      spiral },
     { NULL,       NULL },
 };
 
@@ -87,6 +89,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "/opt/alacritty/target/release/alacritty", "--config-file", "/opt/alacritty/alacritty.yml", NULL };
 static const char *bluetoothstart[] = {"/home/lisp3r/go/bin/sluez", "auto", "--device", "F4:7D:EF:B1:A3:E4", NULL};
 static const char *vpn[] = {"/usr/local/bin/vpnr", NULL};
+static const char *spotify[] = {"spt", NULL};
 
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 //static char *statuscmds[] = { "notify-send Mouse$BUTTON" };
@@ -100,16 +103,17 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },				// fullscreen
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+//	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+//	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[2]} },
+    { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ControlMask, 			XK_b,  	   spawn,          {.v = bluetoothstart } },
 	{ MODKEY|ControlMask,           XK_v,  	   spawn,          {.v = vpn } },
 	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
