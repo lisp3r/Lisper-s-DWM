@@ -15,13 +15,13 @@ static const int vertpadbar         = 7;        /* vertical padding for statusba
 
 // static const char *fonts[]          = { "monospace:size=10" };
 static const char *fonts[] = { "FontAwesome:size=10", "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_green[]        = "#354831";
+static const char dmenufont[] = "monospace:size=10";
+static const char col_gray1[] = "#222222";
+static const char col_gray2[] = "#444444";
+static const char col_gray3[] = "#bbbbbb";
+static const char col_gray4[] = "#eeeeee";
+static const char col_cyan[]  = "#005577";
+static const char col_green[] = "#354831";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -33,14 +33,13 @@ static const char *colors[][3]      = {
 static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "firefox",    NULL,       NULL,       1 << 0,     0,           -1 },
-	{ "code",       NULL,       NULL,       1 << 1,     0,           -1 },
-    { "spt",    NULL,       "spt",  1 << 6,     0,           -1},
+    /* xprop(1):
+     *  WM_CLASS(STRING) = instance, class
+     *  WM_NAME(STRING) = title
+     */
+    /* class      instance    title       tags mask     isfloating   monitor */
+    { "firefox",    NULL,     NULL,       1 << 0,       0,           -1 },
+    { "code",       NULL,     NULL,       1 << 1,       0,           -1 },
 };
 
 /* layout(s) */
@@ -54,8 +53,8 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
     /* symbol     arrange function */
     { ":::",      gaplessgrid }, /* split vertical*/
-    { "TTT",      bstack }, /* split horizontal */
     { ">M>",      centeredfloatingmaster }, /* float */
+    { "TTT",      bstack }, /* split horizontal */
     { "[M]",      monocle },
     // { "[]=",      tile },    /* split vertical*/
     //{ "><>",      NULL },    /* no layout function means floating behavior */
@@ -89,7 +88,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "/opt/alacritty/target/release/alacritty", "--config-file", "/opt/alacritty/alacritty.yml", NULL };
 static const char *bluetoothstart[] = {"/home/lisp3r/go/bin/sluez", "auto", "--device", "F4:7D:EF:B1:A3:E4", NULL};
 static const char *vpn[] = {"/usr/local/bin/vpnr", NULL};
-static const char *spotify[] = {"spt", NULL};
+static const char *spotify[] = {"spotify", NULL};
 
 /* commands spawned when clicking statusbar, the mouse button pressed is exported as BUTTON */
 //static char *statuscmds[] = { "notify-send Mouse$BUTTON" };
@@ -97,41 +96,41 @@ static const char *spotify[] = {"spt", NULL};
 //static char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,             			XK_space,  spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },				// fullscreen
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-//	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-//	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[2]} },
+    /* modifier                     key        function        argument */
+    { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+    { MODKEY,                       XK_space,  spawn,          {.v = termcmd } },
+    { MODKEY,                       XK_b,      togglebar,      {0} },               // fullscreen
+    { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+    { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+//  { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+//  { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+    { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+    { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+    { MODKEY,                       XK_Return, zoom,           {0} },
+    { MODKEY,                       XK_Tab,    view,           {0} },
+    //{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+    { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+    { MODKEY,                       XK_u,      setlayout,      {.v = &layouts[1]} },
+    { MODKEY,                       XK_i,      setlayout,      {.v = &layouts[2]} },
     { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ControlMask, 			XK_b,  	   spawn,          {.v = bluetoothstart } },
-	{ MODKEY|ControlMask,           XK_v,  	   spawn,          {.v = vpn } },
-	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { MODKEY|ControlMask,           XK_b,      spawn,          {.v = bluetoothstart } },
+    { MODKEY|ControlMask,           XK_v,      spawn,          {.v = vpn } },
+    //{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+    //{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+    { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+    { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+    { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+    TAGKEYS(                        XK_1,                      0)
+    TAGKEYS(                        XK_2,                      1)
+    TAGKEYS(                        XK_3,                      2)
+    TAGKEYS(                        XK_4,                      3)
+    TAGKEYS(                        XK_5,                      4)
+    TAGKEYS(                        XK_6,                      5)
+    TAGKEYS(                        XK_7,                      6)
+    TAGKEYS(                        XK_8,                      7)
+    TAGKEYS(                        XK_9,                      8)
+    { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
 /* button definitions */
