@@ -14,7 +14,7 @@ static const int horizpadbar        = 0;        /* horizontal padding for status
 static const int vertpadbar         = 7;        /* vertical padding for statusbar */
 
 // static const char *fonts[]          = { "monospace:size=10" };
-static const char *fonts[] = { "FontAwesome:size=10", "monospace:size=10" };
+static const char *fonts[] = { "FontAwesome:size=11", "monospace:size=10" };
 static const char dmenufont[] = "monospace:size=10";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
@@ -30,7 +30,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
+static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
     /* xprop(1):
