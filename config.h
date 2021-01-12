@@ -13,9 +13,8 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 0;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 7;        /* vertical padding for statusbar */
 
-// static const char *fonts[]          = { "monospace:size=10" };
-static const char *fonts[] = { "FontAwesome:size=11", "monospace:size=10" };
-static const char dmenufont[] = "monospace:size=10";
+static const char *fonts[] = { "FontAwesome:size=12", "xos4terminus:regular:pixelsize=14" };
+static const char dmenufont[] = "xos4terminus:regular:pixelsize=14";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
@@ -30,7 +29,7 @@ static const char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
+static const char *tags[] = { "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -57,8 +56,8 @@ static const Layout layouts[] = {
     { ">M>",      centeredfloatingmaster }, /* float */
     { "TTT",      bstack }, /* split horizontal */
     { "[M]",      monocle },
-    // { "[]=",      tile },    /* split vertical*/
-    //{ "><>",      NULL },    /* no layout function means floating behavior */
+    // { "",      tile },    /* split vertical*/
+    //{ "",      NULL },    /* no layout function means floating behavior */
     { "|M|",      centeredmaster },
     { ":::",      gaplessgrid }, /* split vertical*/
     { "---",      horizgrid }, /* split vertical*/
