@@ -52,14 +52,13 @@ static const int   resizehints = 1;    /* 1 means respect size hints in tiled re
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    { ":::",      gaplessgrid }, /* split vertical*/
-    { ">M>",      centeredfloatingmaster }, /* float */
-    { "TTT",      bstack }, /* split horizontal */
+    { "[T]",      tile },    /* split vertical*/
+    { "[F]",      centeredfloatingmaster }, /* float */
+    { "[H]",      bstack }, /* split horizontal */
     { "[M]",      monocle },
-    // { "",      tile },    /* split vertical*/
     //{ "",      NULL },    /* no layout function means floating behavior */
-    { "|M|",      centeredmaster },
     { ":::",      gaplessgrid }, /* split vertical*/
+    { "|M|",      centeredmaster },
     { "---",      horizgrid }, /* split vertical*/
     { "###",      nrowgrid },
     { "HHH",      grid }, /* split horizontal*/
@@ -87,7 +86,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_green, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "/opt/alacritty/target/release/alacritty", "--config-file", "/opt/alacritty/alacritty.yml", NULL };
 static const char *bluetoothstart[] = {"/home/lisp3r/go/bin/sluez", "auto", "--device", "F4:7D:EF:B1:A3:E4", NULL};
-static const char *vpn[] = {"/usr/local/bin/vpnr", NULL};
+// static const char *vpn[] = {"/usr/local/bin/openvpn", NULL};
+static const char *vpn[] = {"/usr/local/bin/wireguard", NULL};
 static const char *setupmon[] = {"xrandr", "--output", "DP1", "--auto", "--right-of", "eDP1", NULL};
 // Script is not working
 // static const char *spotify[] = {"spotify", NULL};
